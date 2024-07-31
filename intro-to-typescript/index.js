@@ -70,3 +70,70 @@ const users = [
     { id: 4, username: "TypeScript" }
 ];
 users.forEach(user => console.log(user.username));
+let user = { id: 1, name: "John" };
+console.log(user);
+;
+const car = { marca: "Toyota", modelo: "Plus", año: 2000 };
+console.log(car.marca);
+console.log(car.modelo);
+console.log(car.año);
+function aumentarAño(car) {
+    return car.año = car.año + 1;
+}
+aumentarAño(car);
+console.log(car);
+function add(a, b) {
+    return a + b;
+}
+;
+let arrayOfNumbers = [0, 20, 9, 1, 10, 11, 2];
+function retornarMayor(array) {
+    return array.reduce((a, b) => {
+        if (a > b) {
+            return a;
+        }
+        else {
+            return b;
+        }
+    });
+}
+console.log(retornarMayor(numbersToSum));
+console.log(retornarMayor(arrayOfNumbers));
+function validarParametros(...params) {
+    if (!(params.length >= 2)) {
+        throw new Error("Se necesitan al menos 2 parametros para poder comparar.");
+    }
+    const [param1, param2] = params;
+    if (typeof param1 !== typeof param2) {
+        throw new Error("Los tipos de los dos primeros parametros no son correctos ");
+    }
+    const validarConEvery = params.every(param => typeof param === typeof param1);
+    if (!validarConEvery) {
+        throw new Error("Uno o más de los parametros tiene un tipo diferente.");
+    }
+    return "Todo esté bien, la lista de parametros cumple los requisitos!";
+}
+try {
+    console.log(validarParametros(2, 1, 1, 10, 11, 2));
+}
+catch (err) {
+    console.error("Error:", err.message);
+}
+// Tarea 3: Define una funcion que reciba una matriz cuadrada de numeros como parametros y devuelva la matriz gira 90 grados en sentido horario. (2 Riwi points)
+let matriz = [
+    ["a", "b"],
+    ["c", "d"]
+];
+function invertir90Grados(matriz) {
+    let newMatriz = [
+        ["", ""],
+        ["", ""]
+    ];
+    for (let i = matriz.length - 1; i >= 0; i--) {
+        for (let j = 0; j < matriz.length; j++) {
+            newMatriz[i][j] = matriz[(matriz.length - 1) - i][j];
+        }
+    }
+    return newMatriz;
+}
+console.log(invertir90Grados(matriz));
