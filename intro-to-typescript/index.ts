@@ -191,7 +191,7 @@ function invertir90Grados(matriz:string[][]): string[][] {
 console.log(invertir90Grados(matriz));
 
 
-class Person {
+class Person1 {
   private name: string;
   private age: number;
 
@@ -205,8 +205,8 @@ class Person {
   }
 }
 
-let person = new Person("Alice", 30);
-console.log(person.greet());
+let person1 = new Person1("Alice", 30);
+console.log(person1.greet());
 
 
 class Animal {
@@ -236,7 +236,7 @@ interface Shape {
   area(): number;
 }
 
-class Circle implements Shape {
+class Circle1 implements Shape {
   private radius: number;
 
   constructor(radius: number) {
@@ -248,8 +248,8 @@ class Circle implements Shape {
   }
 }
 
-let circle = new Circle(5);
-console.log(circle.area()); // Output: 78.54
+let circle1 = new Circle1(5);
+console.log(circle1.area()); // Output: 78.54
 
 interface NotificationService {
   sendNotification(message: string): void;
@@ -265,4 +265,132 @@ class SMSNotificationService implements NotificationService {
   sendNotification(message: string): void {
     console.log(`Sending SMS notification: ${message}`);
   }
+}
+
+class OrderService {
+  private notificationService: NotificationService;
+
+  constructor(notificationService: NotificationService) {
+    this.notificationService = notificationService;
+  }
+
+  placeOrder(orderId: string): void {
+    // Lógica para realizar el pedido
+    console.log(`Order ${orderId} placed.`);
+    this.notificationService.sendNotification(`Order ${orderId} has been placed.`);
+  }
+}
+
+const emailService = new EmailNotificationService();
+const smsService = new SMSNotificationService();
+
+const orderServiceWithEmail = new OrderService(emailService);
+orderServiceWithEmail.placeOrder("1234");
+
+const orderServiceWithSMS = new OrderService(smsService);
+orderServiceWithSMS.placeOrder("5678");
+
+
+class MathUtils {
+  static sum(a: number, b: number): number {
+    return a + b;
+  }
+}
+
+console.log(MathUtils.sum(5, 10)); // Output: 15
+
+class Circle {
+  readonly radius: number;
+
+  constructor(radius: number) {
+    this.radius = radius;
+  }
+}
+
+let circle = new Circle(5);
+console.log(circle.radius); // Output: 5
+// circle.radius = 10; // Error: Cannot assign to 'radius' because it is a read-only property.
+
+function addMetadata(target: any, key: string) {
+  // Add metadata to the target or key
+}
+
+function log(target: any, key: string) {
+  console.log(`Property ${key} has been accessed.`);
+}
+
+class Person {
+  // @log
+name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+let person = new Person("Alice");
+console.log(person.name); // Output: Property name has been accessed.
+
+
+
+class DatabaseConnection {
+  beginTransaction(): void { // Inicia una transacción
+    console.log("Transaction started");
+  }
+
+  commitTransaction(): void { // Confirma una transacción
+    console.log("Transaction committed");
+  }
+
+  rollbackTransaction(): void { // Revierte una transacción
+    console.log("Transaction rolled back");
+  }
+}
+
+
+function Transactional(target: any, propertyName: string, descriptor: TypedPropertyDescriptor<Function>) {
+  const originalMethod = descriptor.value!;
+  
+  descriptor.value = function (...args: any[]) {
+    const dbConnection = new DatabaseConnection();
+    
+    dbConnection.beginTransaction();
+    
+    try {
+      const result = originalMethod.apply(this, args);
+      dbConnection.commitTransaction();
+      return result;
+    } catch (error) {
+      dbConnection.rollbackTransaction();
+      throw error;
+    }
+  };
+  
+  return descriptor;
+}
+
+class UserService {
+  // @Transactional
+  createUser(username: string, email: string): void {
+    console.log(`Creating user ${username} with email ${email}`);
+    // Simulamos una operación que podría fallar
+    if (!email.includes('@')) {
+      throw new Error("Invalid email");
+    }
+    console.log(`User ${username} created successfully`);
+  }
+}
+
+// Probando la funcionalidad
+const userService = new UserService();
+try {
+  userService.createUser("john_doe", "john.doe@example.com");
+} catch (error: any) {
+  console.error("Transaction failed:", error.message);
+}
+
+try {
+  userService.createUser("jane_doe", "jane.doeexample.com");
+} catch (error: any) {
+  console.error("Transaction failed:", error.message);
 }

@@ -165,6 +165,7 @@ Definir tipos personalizados mejora la claridad y seguridad del código, especia
 
 #### Pregunta de reflexión:
 - ¿Cómo ayuda el tipado estático a prevenir errores en el manejo de variables y constantes?
+R//  El tipado estático detecta errores antes de ejecutar el código, asegurándose de que estés utilizando los tipos de datos correctos para tus variables y constantes, evitando así problemas inesperados.
 
 ### 2. Operadores (aritméticos, booleanos)
 #### Introducción:
@@ -184,6 +185,7 @@ Utilizar operadores con tipos definidos ayuda a prevenir errores lógicos y mate
 
 #### Pregunta de reflexión:
 - ¿Qué ventajas ofrece el uso de operadores en un lenguaje tipado como TypeScript?
+R// Los operadores en TypeScript facilitan la realización de operaciones matemáticas, lógicas y de comparación, garantizando la compatibilidad de los tipos de datos involucrados y reduciendo errores.
 
 ### 3. Estructuras de decisión (if, switch, ternarios)
 #### Introducción:
@@ -215,6 +217,7 @@ El uso correcto de estructuras de decisión mejora la lógica y legibilidad del 
 
 #### Pregunta de reflexión:
 - ¿Cuándo es preferible usar un operador ternario en lugar de una estructura if?
+R// El operador ternario es ideal para escribir expresiones condicionales simples y concisas, especialmente cuando necesitas evaluar una condición y elegir entre dos resultados posibles en una sola línea de código.
 
 ### 4. Estructuras de iteración (while, for, foreach, map)
 #### Introducción:
@@ -239,6 +242,7 @@ Iterar sobre colecciones de datos es una operación común que debe manejarse ef
 
 #### Pregunta de reflexión:
 - ¿Qué ventajas tiene el método `map` sobre un bucle for en TypeScript?
+R//El método map simplifica la transformación de arrays al aplicar una función a cada elemento y crear un nuevo array con los resultados, resultando más legible y eficiente que un bucle tradicional.
 
 
 # Estructuras de Datos y Funciones
@@ -264,6 +268,7 @@ Los arrays son ampliamente utilizados para almacenar y manipular conjuntos de da
 
 ### Pregunta de reflexión
 - **Pregunta:** ¿Cómo se puede asegurar el tipo de datos en un array en TypeScript?
+R// Puedes especificar el tipo de datos que un array puede contener, lo que te ayuda a evitar errores al insertar elementos incorrectos y hace que tu código sea más predecible.
 
 ## 2. Objetos
 
@@ -289,6 +294,7 @@ Los objetos son ideales para modelar datos complejos como usuarios, productos, �
 
 ### Pregunta de reflexión
 - **Pregunta:** ¿Qué ventajas ofrece el uso de tipos personalizados en objetos?
+R// Los tipos personalizados te permiten definir tus propios tipos de datos, lo que es útil para modelar estructuras de datos complejas, hacer tu código más expresivo y fácil de entender, y prevenir errores al definir claramente las propiedades de tus objetos.
 
 ## 3. Funciones
 
@@ -312,6 +318,7 @@ Las funciones son esenciales para la modularidad y la reutilización del código
 
 ### Pregunta de reflexión
 - **Pregunta:** ¿Qué beneficios ofrece la definición explícita de tipos en las funciones en TypeScript?
+R// Al especificar los tipos de datos que una función espera como entrada y qué tipo de dato devolverá, mejoras la legibilidad del código, facilitas la detección de errores y haces que tus funciones sean más fáciles de usar y mantener.
 
 ## Conclusión
 En esta guía, hemos explorado las estructuras de datos fundamentales y las funciones en TypeScript. Hemos aprendido a definir y utilizar arrays, objetos y funciones con tipos explícitos, lo que mejora la robustez y la claridad del código. Los ejercicios y preguntas de reflexión proporcionados deben ayudarte a consolidar tu comprensión y aplicar estos conceptos en tus propios proyectos.
