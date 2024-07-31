@@ -250,3 +250,19 @@ class Circle implements Shape {
 
 let circle = new Circle(5);
 console.log(circle.area()); // Output: 78.54
+
+interface NotificationService {
+  sendNotification(message: string): void;
+}
+
+class EmailNotificationService implements NotificationService {
+  sendNotification(message: string): void {
+    console.log(`Sending email notification: ${message}`);
+  }
+}
+
+class SMSNotificationService implements NotificationService {
+  sendNotification(message: string): void {
+    console.log(`Sending SMS notification: ${message}`);
+  }
+}
