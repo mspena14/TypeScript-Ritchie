@@ -137,3 +137,26 @@ function invertir90Grados(matriz) {
     return newMatriz;
 }
 console.log(invertir90Grados(matriz));
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greet() {
+        return `Hello, my name is ${this.name} and I'm ${this.age} years old.`;
+    }
+}
+let person = new Person("Alice", 30);
+console.log(person.greet());
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        return `${this.name} makes a sound.`;
+    }
+}
+class Dog extends Animal {
+}
+let dog = new Dog("Buddy");
+console.log(dog.speak()); // Output: Buddy barks.

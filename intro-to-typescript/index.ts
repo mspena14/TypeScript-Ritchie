@@ -146,14 +146,14 @@ function validarParametros(...params: any[]): string {
     throw new Error("Se necesitan al menos 2 parametros para poder comparar.");
   }
 
-  const [param1, param2] = params;
+  const [param1, param2]:any = params;
 
   if (typeof param1 !== typeof param2) {
     throw new Error("Los tipos de los dos primeros parametros no son correctos ");
     
   }
 
-  const validarConEvery = params.every(param => typeof param === typeof param1)
+  const validarConEvery: boolean = params.every(param => typeof param === typeof param1)
 
   if (!validarConEvery) {
     throw new Error("Uno o más de los parametros tiene un tipo diferente.");
@@ -189,3 +189,64 @@ function invertir90Grados(matriz:string[][]): string[][] {
 }
 
 console.log(invertir90Grados(matriz));
+
+
+class Person {
+  private name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet(): string {
+    return `Hello, my name is ${this.name} and I'm ${this.age} years old.`;
+  }
+}
+
+let person = new Person("Alice", 30);
+console.log(person.greet());
+
+
+class Animal {
+  protected name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  speak(): string {
+    return `${this.name} makes a sound.`;
+  }
+}
+
+class Dog extends Animal {
+  speak(): string {
+    return `${this.name} barks.`;
+  }
+}
+
+let dog = new Dog("Buddy");
+
+console.log(dog.speak()); // Output: Buddy barks.
+
+
+interface Shape {
+  area(): number;
+}
+
+class Circle implements Shape {
+  private radius: number;
+
+  constructor(radius: number) {
+    this.radius = radius;
+  }
+
+  area(): number {
+    return Math.PI * this.radius ** 2;
+  }
+}
+
+let circle = new Circle(5);
+console.log(circle.area()); // Output: 78.54
